@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Blockies from "react-blockies";
 
 export default function Dashboard() {
+  const [menu, setMenu] = useState(1);
+
   return (
     <div className="flex min-h-screen ">
       <div
@@ -23,18 +25,14 @@ export default function Dashboard() {
 
         <div class="flex flex-col justify-between flex-1 mt-6">
           <nav>
-            <a
-              class="
-                flex
-                items-center
-                px-4
-                py-2
-                text-gray-700
-                bg-gray-200
-                rounded-md
-                dark:bg-gray-700 dark:text-gray-200
-                "
-              href="#"
+            <button
+              className={
+                "flex items-center px-4 py-2 rounded-md " +
+                (menu == 1
+                  ? "bg-gray-300 text-gray-800 rounded-md "
+                  : "text-gray-300")
+              }
+              onClick={() => setMenu(1)}
             >
               <svg
                 class="w-5 h-5"
@@ -52,28 +50,15 @@ export default function Dashboard() {
               </svg>
 
               <span class="mx-4 font-medium">Explore events</span>
-            </a>
-
-            <a
-              class="
-                flex
-                items-center
-                px-4
-                py-2
-                mt-5
-                text-gray-300
-                transition-colors
-                duration-200
-                transform
-                rounded-md
-                dark:text-gray-400
-                hover:bg-gray-200
-                dark:hover:bg-gray-700 dark:hover:text-gray-200
-                hover:text-gray-700
-                desc
-                
-                "
-              href="#"
+            </button>
+            <button
+              className={
+                "flex items-center px-4 py-2 mt-5 rounded-md " +
+                (menu == 2
+                  ? "bg-gray-300 text-gray-800 rounded-md "
+                  : "text-gray-300")
+              }
+              onClick={() => setMenu(2)}
             >
               <svg
                 class="w-5 h-5"
@@ -91,28 +76,16 @@ export default function Dashboard() {
               </svg>
 
               <span class="mx-4 font-medium">My tickets</span>
-            </a>
+            </button>
 
-            <a
-              class="
-                flex
-                items-center
-                px-4
-                py-2
-                mt-5
-                text-gray-300
-                transition-colors
-                duration-200
-                transform
-                rounded-md
-                dark:text-gray-400
-                hover:bg-gray-200
-                dark:hover:bg-gray-700 dark:hover:text-gray-200
-                hover:text-gray-700
-                desc
-                
-                "
-              href="#"
+            <button
+              className={
+                "flex items-center px-4 py-2 mt-5 rounded-md " +
+                (menu == 3
+                  ? "bg-gray-300 text-gray-800 rounded-md "
+                  : "text-gray-300")
+              }
+              onClick={() => setMenu(3)}
             >
               <svg
                 class="w-6 h-6"
@@ -130,28 +103,16 @@ export default function Dashboard() {
               </svg>
 
               <span class="mx-4 font-medium">My events</span>
-            </a>
+            </button>
 
-            <a
-              class="
-                flex
-                items-center
-                px-4
-                py-2
-                mt-5
-                text-gray-300
-                transition-colors
-                duration-200
-                transform
-                rounded-md
-                dark:text-gray-400
-                hover:bg-gray-200
-                dark:hover:bg-gray-700 dark:hover:text-gray-200
-                hover:text-gray-700
-                desc
-                
-                "
-              href="#"
+            <button
+              className={
+                "flex items-center px-4 py-2 mt-5 rounded-md " +
+                (menu == 4
+                  ? "bg-gray-300 text-gray-800 rounded-md "
+                  : "text-gray-300")
+              }
+              onClick={() => setMenu(4)}
             >
               <svg
                 class="w-5 h-5"
@@ -176,11 +137,11 @@ export default function Dashboard() {
               </svg>
 
               <span class="mx-4 font-medium">Settings</span>
-            </a>
+            </button>
 
             <hr class="my-6 mt-40 dark:border-gray-600" />
 
-            <a
+            <button
               class="
                 flex
                 items-center
@@ -193,9 +154,7 @@ export default function Dashboard() {
                 transform
                 rounded-md
                 dark:text-gray-400
-                hover:bg-gray-200
                 dark:hover:bg-gray-700 dark:hover:text-gray-200
-                hover:text-gray-700
                 desc
                 
                 "
@@ -217,9 +176,9 @@ export default function Dashboard() {
               </svg>
 
               <span class="mx-4 font-medium">Guide</span>
-            </a>
+            </button>
 
-            <a
+            <button
               class="
                 flex
                 items-center
@@ -232,9 +191,7 @@ export default function Dashboard() {
                 transform
                 rounded-md
                 dark:text-gray-400
-                hover:bg-gray-200
                 dark:hover:bg-gray-700 dark:hover:text-gray-200
-                hover:text-gray-700
                 desc
                 "
               href="#"
@@ -255,14 +212,17 @@ export default function Dashboard() {
               </svg>
 
               <span class="mx-4 font-medium">Developers</span>
-            </a>
+            </button>
           </nav>
         </div>
       </div>
       <div className="flex flex-col glass m-4 pl-10  px-4 w-full  mr-4 ml-6">
         <div className="flex w-full  mt-4 justify-between space-x-5">
           <div className="text-white h-14 heading text-4xl items-center mt-4">
-            Explore events
+            {menu == 1 && <>Explore events</>}
+            {menu == 2 && <>My tickets</>}
+            {menu == 3 && <>My events</>}
+            {menu == 4 && <>Settings</>}
           </div>
           <div
             class="items-center px-4 -mx-2  h-14 white-glassmorphism  text-right 
@@ -334,6 +294,11 @@ export default function Dashboard() {
             </svg>
           </div>
         </div>
+        {/* Handle the page switches here */}
+        {menu == 1 && <>Explore events</>}
+        {menu == 2 && <>My tickets</>}
+        {menu == 3 && <>My events</>}
+        {menu == 4 && <>Settings</>}
       </div>
     </div>
   );
