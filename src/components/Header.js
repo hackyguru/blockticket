@@ -1,6 +1,8 @@
 import React from "react";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
+import { useMoralis } from "react-moralis";
+import Dashboard from "../pages/Dashboard";
 
 const NavBarItem = ({ title, classprops }) => (
   <li className={`mx-4 cursor-pointer ${classprops}`}>{title}</li>
@@ -8,6 +10,8 @@ const NavBarItem = ({ title, classprops }) => (
 
 const Header = () => {
   const [toggleMenu, setToggleMenu] = React.useState(false);
+  const { authenticate, user, logout, isAuthenticated, isAuthenticating } =
+    useMoralis();
 
   return (
     <nav className="w-full flex  justify-between items-center p-4">
@@ -29,10 +33,15 @@ const Header = () => {
             onClick={() => setToggleMenu(true)}
           />
         )}
-
-        <li className="bg-black hidden md:block text-white py-2 px-7 mx-4 cursor-pointer heading hover:bg-primary hover:bg-black">
-          CONNECT WALLET
-        </li>
+        {!isAuthenticated && (
+          <button
+            onClick={() => authenticate()}
+            className="bg-black hidden md:block text-white py-2 px-7 mx-4 cursor-pointer heading hover:bg-primary hover:bg-black"
+          >
+            CONNECT WALLET
+          </button>
+        )}
+        {isAuthenticated && <div>you're in</div>}
         {toggleMenu && (
           <ul
             className="z-10 fixed -top-0 -right-0 p-3 w-full h-screen shadow-2xl md:hidden list-none
