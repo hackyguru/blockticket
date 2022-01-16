@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import Explore from "../dashboard/Explore.js";
+import MyEvents from "../dashboard/MyEvents.js";
+import MyTickets from "../dashboard/MyTickets.js";
+import Settings from "../dashboard/Settings";
 import Blockies from "react-blockies";
 
 export default function Dashboard() {
@@ -29,7 +33,7 @@ export default function Dashboard() {
               className={
                 "flex items-center px-4 py-2 rounded-md " +
                 (menu == 1
-                  ? "bg-gray-300 text-gray-800 rounded-md "
+                  ? "white-glassmorphism text-gray-300 rounded-md "
                   : "text-gray-300")
               }
               onClick={() => setMenu(1)}
@@ -55,7 +59,7 @@ export default function Dashboard() {
               className={
                 "flex items-center px-4 py-2 mt-5 rounded-md " +
                 (menu == 2
-                  ? "bg-gray-300 text-gray-800 rounded-md "
+                  ? "white-glassmorphism text-gray-300 rounded-md "
                   : "text-gray-300")
               }
               onClick={() => setMenu(2)}
@@ -82,7 +86,7 @@ export default function Dashboard() {
               className={
                 "flex items-center px-4 py-2 mt-5 rounded-md " +
                 (menu == 3
-                  ? "bg-gray-300 text-gray-800 rounded-md "
+                  ? "white-glassmorphism text-gray-300 rounded-md "
                   : "text-gray-300")
               }
               onClick={() => setMenu(3)}
@@ -109,7 +113,7 @@ export default function Dashboard() {
               className={
                 "flex items-center px-4 py-2 mt-5 rounded-md " +
                 (menu == 4
-                  ? "bg-gray-300 text-gray-800 rounded-md "
+                  ? "white-glassmorphism text-gray-300 rounded-md "
                   : "text-gray-300")
               }
               onClick={() => setMenu(4)}
@@ -154,7 +158,7 @@ export default function Dashboard() {
                 transform
                 rounded-md
                 dark:text-gray-400
-                dark:hover:bg-gray-700 dark:hover:text-gray-200
+                dark:hover:bg-gray-700 dark:hover:text-gray-300
                 desc
                 
                 "
@@ -191,7 +195,7 @@ export default function Dashboard() {
                 transform
                 rounded-md
                 dark:text-gray-400
-                dark:hover:bg-gray-700 dark:hover:text-gray-200
+                dark:hover:bg-gray-700 dark:hover:text-gray-300
                 desc
                 "
               href="#"
@@ -218,8 +222,8 @@ export default function Dashboard() {
       </div>
       <div className="flex flex-col glass m-4 pl-10  px-4 w-full  mr-4 ml-6">
         <div className="flex w-full  mt-4 justify-between space-x-5">
-          <div className="text-white h-14 heading text-4xl items-center mt-4">
-            {menu == 1 && <>Explore events</>}
+          <div className="text-gray-300 h-14 heading text-4xl items-center mt-4">
+            {menu == 1 && <>Hey there!</>}
             {menu == 2 && <>My tickets</>}
             {menu == 3 && <>My events</>}
             {menu == 4 && <>Settings</>}
@@ -239,7 +243,7 @@ export default function Dashboard() {
               mx-2
               font-medium
               text-white
-              dark:text-gray-200
+              dark:text-gray-300
               hover:underline
               desc
               ml-3
@@ -295,10 +299,10 @@ export default function Dashboard() {
           </div>
         </div>
         {/* Handle the page switches here */}
-        {menu == 1 && <>Explore events</>}
-        {menu == 2 && <>My tickets</>}
-        {menu == 3 && <>My events</>}
-        {menu == 4 && <>Settings</>}
+        {menu == 1 && <Explore />}
+        {menu == 2 && <MyTickets />}
+        {menu == 3 && <MyEvents />}
+        {menu == 4 && <Settings />}
       </div>
     </div>
   );
